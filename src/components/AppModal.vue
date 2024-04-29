@@ -15,7 +15,13 @@ onClickOutside(modalContainer, () => {
 
 <template>
   <div v-if="isAuthModalOpened || isDetailsModalOpened" class="modal">
-    <div class="modal__container" ref="modalContainer">
+    <div
+      class="modal__container"
+      ref="modalContainer"
+      :class="{
+        modal__container_details: isDetailsModalOpened
+      }"
+    >
       <div class="modal__header">
         <slot name="header"></slot>
       </div>

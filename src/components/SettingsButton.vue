@@ -54,7 +54,7 @@ function handleLogOut() {
       <button
         v-for="(_, tab) in tabs"
         :key="tab"
-        :class="['tab-button', { active: currentTab === tab }]"
+        :class="['tabs__button', { active: currentTab === tab }]"
         @click="currentTab = tab"
       >
         {{ tab }}
@@ -106,7 +106,6 @@ function handleLogOut() {
   width: 856px;
 }
 
-.tab-button {
 .tabs__button {
   width: 50%;
   height: 62px;

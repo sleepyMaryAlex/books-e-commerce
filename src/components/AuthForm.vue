@@ -283,5 +283,20 @@ function handleSubmit() {
   background-color: $error-color;
   font-size: 16px;
   color: $text-light;
+  text-align: center;
+  padding: 10px;
+}
+
+@media (max-width: 767px) {
+  .form__input {
+    width: 350px;
+  }
+}
+
+@media (max-width: 478px) {
+  .form__input,
+  .form__submit-error-message {
+    width: 250px;
+  }
 }
 </style>
