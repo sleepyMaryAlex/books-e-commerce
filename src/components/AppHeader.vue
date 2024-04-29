@@ -14,7 +14,7 @@ const { isAuthModalOpened, setAuthModalOpened } = inject('isAuthModalOpened');
 const access = ref('log-in');
 
 function handleCartButtonClick() {
-  store.user ? router.push('/cart') : setAuthModalOpened(true);
+  store.currentUser ? router.push('/cart') : setAuthModalOpened(true);
 }
 </script>
 
@@ -24,7 +24,7 @@ function handleCartButtonClick() {
       <div class="header__logo">Books</div>
       <div class="header__buttons">
         <button
-          v-if="!store.user"
+          v-if="!store.currentUser"
           type="button"
           class="header__log-in-button"
           @click="setAuthModalOpened(true)"

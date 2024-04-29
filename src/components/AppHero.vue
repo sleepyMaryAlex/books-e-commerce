@@ -16,10 +16,15 @@ function handleButtonClick() {
     <div class="hero__container">
       <div class="hero__frame">
         <h1 class="hero__heading">Hello! We're glad to see you. Let's start our purchase</h1>
-        <button v-if="!store.user" type="button" class="hero__button" @click="handleButtonClick">
+        <button
+          v-if="!store.currentUser"
+          type="button"
+          class="hero__button"
+          @click="handleButtonClick"
+        >
           Get started
         </button>
-        <a v-if="store.user" href="#products" class="hero__link">Get started</a>
+        <a v-if="store.currentUser" href="#products" class="hero__link">Get started</a>
       </div>
     </div>
   </section>
@@ -65,15 +70,18 @@ function handleButtonClick() {
 @media (max-width: 991px) {
   .hero__heading {
     font-size: 50px;
-    font-weight: 600;
     line-height: 80px;
-    text-transform: uppercase;
   }
 }
 
 @media (max-width: 767px) {
   .hero__container {
     padding: $padding-x-mobile;
+  }
+
+  .hero__heading {
+    font-size: 40px;
+    line-height: 60px;
   }
 }
 </style>
