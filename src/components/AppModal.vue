@@ -54,4 +54,20 @@ onClickOutside(modalContainer, () => {
 .modal__footer {
   @include flex(row, center, stretch);
 }
+
+@media (max-width: 767px) {
+  .modal__container {
+    min-height: 690px;
+    padding: 45px 40px;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 478px) {
+  .modal__container {
+    min-height: 650px;
+    padding: 30px 20px;
+    gap: 20px;
+  }
+}
 </style>
