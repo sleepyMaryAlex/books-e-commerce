@@ -1,6 +1,9 @@
 <script setup>
 const classNames = ['last', 'second', 'first', 'basic', 'first', 'second', 'last'];
 const error = 401;
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
 </script>
 
 <template>
@@ -17,7 +20,7 @@ const error = 401;
         </p>
       </div>
       <p class="not-found__title">The page you were looking for could not be found</p>
-      <div class="not-found__return-button">
+      <div class="not-found__return-button" @click="router.push('/')">
         <p>Return to main page</p>
       </div>
     </div>
@@ -35,6 +38,7 @@ const error = 401;
   color: $text-light;
   background-color: $bg-dark;
   padding: 20px;
+  cursor: pointer;
 }
 
 .not-found__title {
