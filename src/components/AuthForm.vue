@@ -138,6 +138,7 @@ function handleSubmit() {
 <style lang="scss" scoped>
 .form__container {
   @include flex(column, flex-start, stretch);
+  @include flex(column, center, stretch);
   gap: 24px;
 }
 

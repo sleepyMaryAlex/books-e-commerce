@@ -1,21 +1,22 @@
 <script setup>
 import { useUserStore } from '@/stores/user';
-import { updateCart, emptyCart, deleteFromCart } from '../services/cartService';
+import { useCartStore } from '@/stores/cart';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
 const userStore = useUserStore();
+const cartStore = useCartStore();
 
 function handleQuantityChange(bookId, value) {
-  updateCart(bookId, value, userStore.updateCart);
+  cartStore.updateCart(bookId, value);
 }
 
 function handleEmptyCartButtonClick() {
-  emptyCart(userStore.currentUser.id, userStore.emptyCart);
+  cartStore.emptyCart(userStore.currentUser.id);
 }
 
 function handleRemoveButtonClick(bookId) {
-  deleteFromCart(bookId, userStore.deleteFromCart);
+  cartStore.deleteFromCart(bookId);
 }
 </script>
 
@@ -46,7 +47,7 @@ function handleRemoveButtonClick(bookId) {
                 Remove
               </button>
             </td>
-            <td>
+            <td class="table__quantity">
               <input
                 type="number"
                 class="table__input"
@@ -105,6 +106,8 @@ function handleRemoveButtonClick(bookId) {
   @include flex(column, center, center);
   gap: 40px;
   padding: $padding-x-desktop;
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
 
 .cart__heading {
@@ -185,6 +188,36 @@ function handleRemoveButtonClick(bookId) {
 @media (max-width: 767px) {
   .cart__container {
     padding: $padding-x-mobile;
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+}
+
+@media (max-width: 478px) {
+  .cart__buttons {
+    @include flex(column, center, center);
+    width: 100%;
+  }
+
+  .cart__button {
+    width: 100%;
+  }
+
+  .table {
+    border-spacing: 15px;
+
+    & td p {
+      font-size: 14px;
+    }
+
+    & .table__quantity {
+      min-width: auto;
+    }
+  }
+
+  .table__input {
+    width: 70px;
+    padding: 5px;
   }
 }
 </style>

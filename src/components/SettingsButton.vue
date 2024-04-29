@@ -107,6 +107,7 @@ function handleLogOut() {
 }
 
 .tab-button {
+.tabs__button {
   width: 50%;
   height: 62px;
   cursor: pointer;
@@ -120,6 +121,18 @@ function handleLogOut() {
   &.active {
     color: $text-dark;
     border-bottom: 1px solid $text-dark;
+  }
+}
+
+@media (max-width: 1060px) {
+  .tabs {
+    width: 600px;
+  }
+}
+
+@media (max-width: 767px) {
+  .tabs {
+    width: 100%;
   }
 }
 </style>

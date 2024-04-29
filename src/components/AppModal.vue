@@ -49,6 +49,10 @@ onClickOutside(modalContainer, () => {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
   @include flex(column, space-between, stretch);
   gap: 40px;
+
+  &.modal__container_details {
+    @include flex(column, flex-start, stretch);
+  }
 }
 
 .modal__footer {
