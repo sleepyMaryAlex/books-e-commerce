@@ -4,18 +4,19 @@ import { computed, onMounted, ref, watchEffect, inject } from 'vue';
 import 'vue3-carousel/dist/carousel.css';
 import { Carousel, Slide } from 'vue3-carousel';
 import { useUserStore } from '@/stores/user';
+import { useCartStore } from '@/stores/cart';
 import { useRouter } from 'vue-router';
-import { addToCart } from '../services/cartService';
 
 const router = useRouter();
 
 const userStore = useUserStore();
+const cartStore = useCartStore();
 
 const { isAuthModalOpened, setAuthModalOpened } = inject('isAuthModalOpened');
 
-function handleAddToCartButtonClick(bookId) {
+function handleAddToCartButtonClick(book) {
   if (userStore.currentUser) {
-    addToCart(bookId, 1, userStore.addToCart);
+    cartStore.addToCart(book, 1);
     router.push('/cart');
   } else {
     setAuthModalOpened(true);
@@ -69,23 +70,23 @@ function isBookAddedToCart(id) {
           :wrapAround="true"
           class="products__carousel"
         >
-          <Slide v-for="{ id, title, details, price, image } in books" :key="id" class="product">
+          <Slide v-for="book in books" :key="book.id" class="product">
             <div class="product__image-wrapper">
-              <img :src="image" alt="Product image" class="product__image" />
+              <img :src="book.image" alt="Product image" class="product__image" />
             </div>
-            <h3 class="product__title">{{ title }}</h3>
-            <p class="product__details">{{ details }}</p>
-            <p class="product__price">${{ price }}</p>
+            <h3 class="product__title">{{ book.title }}</h3>
+            <p class="product__details">{{ book.details }}</p>
+            <p class="product__price">${{ book.price }}</p>
             <button
               type="button"
               class="product__add-to-cart-button"
-              @click="handleAddToCartButtonClick(id)"
-              :disabled="isBookAddedToCart(id)"
+              @click="handleAddToCartButtonClick(book)"
+              :disabled="isBookAddedToCart(book.id)"
               :class="{
-                disabled: isBookAddedToCart(id)
+                disabled: isBookAddedToCart(book.id)
               }"
             >
-              {{ isBookAddedToCart(id) ? 'Added to cart' : 'Add to cart' }}
+              {{ isBookAddedToCart(book.id) ? 'Added to cart' : 'Add to cart' }}
             </button>
           </Slide>
         </Carousel>
