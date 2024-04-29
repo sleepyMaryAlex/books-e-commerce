@@ -17,20 +17,21 @@ const tabs = {
   transactions: AppTransactions
 };
 
-function openDetailsModalOpened() {
+function openDetailsModal(tab) {
+  currentTab.value = tab;
   isDetailsModalOpened.value = true;
   isPopoverOpened.value = false;
 }
 
 function handleLogOut() {
-  store.deleteUser();
+  store.deleteCurrentUser();
   isPopoverOpened.value = false;
 }
 </script>
 
 <template>
   <button
-    v-if="store.user"
+    v-if="store.currentUser"
     type="button"
     class="header__settings-button"
     @click="isPopoverOpened = !isPopoverOpened"
@@ -38,8 +39,10 @@ function handleLogOut() {
     <img :src="settingsIcon" alt="Settings" />
   </button>
   <div class="popover" :class="{ opened: isPopoverOpened }">
-    <button type="button" class="popover__button" @click="openDetailsModalOpened">Purchases</button>
-    <button type="button" class="popover__button" @click="openDetailsModalOpened">
+    <button type="button" class="popover__button" @click="openDetailsModal('purchases')">
+      Purchases
+    </button>
+    <button type="button" class="popover__button" @click="openDetailsModal('transactions')">
       Transactions
     </button>
     <button type="button" class="popover__button" @click="handleLogOut">Log out</button>
