@@ -18,6 +18,12 @@ const router = createRouter({
       path: '/checkout',
       name: 'checkout',
       component: () => import('../views/CheckoutView.vue')
+    },
+    ,
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'not-found',
+      component: () => import('../views/NotFoundView.vue')
     }
   ]
 });
