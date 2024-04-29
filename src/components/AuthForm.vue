@@ -2,24 +2,25 @@
 import { defineProps, defineEmits, ref, watch, inject, computed } from 'vue';
 import googleIcon from '../assets/icons/google.svg';
 import { useUserStore } from '@/stores/user';
-import { v4 as uuidv4 } from 'uuid';
-
-const store = useUserStore();
-
-const { setAuthModalOpened } = inject('isAuthModalOpened');
-const props = defineProps(['access']);
-const emit = defineEmits(['setAccess']);
-
-const email = ref(store.usersData.findLast((user) => user.isRemember === true)?.email || '');
-const password = ref(store.usersData.findLast((user) => user.isRemember === true)?.password || '');
-const isRemember = ref(store.usersData.findLast((user) => user.isRemember === true)?.isRemember || false);
 
 const submitErrorMessage = ref('');
 const emailFeedbackMessage = ref('');
 const passwordFeedbackMessage = ref('');
 
+const store = useUserStore();
+
+const { isAuthModalOpened, setAuthModalOpened } = inject('isAuthModalOpened');
+const props = defineProps(['access']);
+const emit = defineEmits(['setAccess']);
+
+const email = ref(store.usersData.findLast((user) => user.isRemember === true)?.email || '');
+const password = ref(store.usersData.findLast((user) => user.isRemember === true)?.password || '');
+const isRemember = ref(
+  store.usersData.findLast((user) => user.isRemember === true)?.isRemember || false
+);
+
 watch(
-  () => store.user,
+  () => store.currentUser,
   () => {
     setAuthModalOpened(false);
     emit('setAccess', 'log-in');
