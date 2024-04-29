@@ -36,7 +36,7 @@ watch(email, () => {
   } else if (email.value === '') {
     emailFeedbackMessage.value = 'Please fill out this field';
   } else {
-    emailFeedbackMessage.value = 'This needs to be an email address';
+    emailFeedbackMessage.value = 'This needs to be an email';
   }
 });
 
@@ -44,7 +44,7 @@ watch(password, () => {
   if (password.value === '') {
     passwordFeedbackMessage.value = 'Please fill out this field';
   } else if (password.value.length < 5) {
-    passwordFeedbackMessage.value = 'Please lenthen this text to 5 characters or more';
+    passwordFeedbackMessage.value = 'Please lenthen this text';
   } else {
     passwordFeedbackMessage.value = '';
   }
