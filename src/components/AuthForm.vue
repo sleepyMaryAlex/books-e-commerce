@@ -60,28 +60,15 @@ const isDisabled = computed(() => {
 });
 
 function handleSubmit() {
-  const user = store.usersData.find(
-    (user) => user.email === email.value && user.password === password.value
-  );
-  if (user) {
-    if (props.access === 'log-in') {
-      user.isRemember = isRemember.value;
-      store.addUser(user);
-    } else {
-      submitErrorMessage.value = 'You already have an account. Please log in';
-    }
-  } else {
-    if (props.access === 'log-in') {
-      submitErrorMessage.value = 'You don’t have an account. Please sign up';
-    } else {
-      const newUser = {
-        id: uuidv4(),
-        email: email.value,
-        password: password.value,
-      };
-      store.addUser(newUser);
-      store.addUserToUsersData(newUser);
-    }
+  const user = store.findUser(email.value, password.value);
+  if (props.access === 'log-in') {
+    user
+      ? store.login(user.id, isRemember.value)
+      : (submitErrorMessage.value = 'You don’t have an account. Please sign up');
+  } else if (props.access === 'sign-up') {
+    user
+      ? (submitErrorMessage.value = 'You already have an account. Please log in')
+      : store.signup(email.value, password.value);
   }
 }
 </script>
@@ -137,7 +124,6 @@ function handleSubmit() {
 
 <style lang="scss" scoped>
 .form__container {
-  @include flex(column, flex-start, stretch);
   @include flex(column, center, stretch);
   gap: 24px;
 }
