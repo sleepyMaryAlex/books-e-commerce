@@ -6,23 +6,25 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'home',
+      name: 'Home',
       component: HomeView
     },
     {
       path: '/cart',
-      name: 'cart',
-      component: () => import('../views/CartView.vue')
+      name: 'Cart',
+      component: () => import('../views/CartView.vue'),
+      meta: { requiresAuth: true }
     },
     {
       path: '/checkout',
-      name: 'checkout',
-      component: () => import('../views/CheckoutView.vue')
+      name: 'Checkout',
+      component: () => import('../views/CheckoutView.vue'),
+      meta: { requiresAuth: true }
     },
     ,
     {
       path: '/:pathMatch(.*)*',
-      name: 'not-found',
+      name: 'NotFound',
       component: () => import('../views/NotFoundView.vue')
     }
   ]
