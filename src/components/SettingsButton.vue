@@ -5,6 +5,7 @@ import settingsIcon from '../assets/icons/settings.svg';
 import AppModal from './AppModal.vue';
 import AppPurchases from './AppPurchases.vue';
 import AppTransactions from './AppTransactions.vue';
+import Popover from './Popover.vue';
 
 const store = useUserStore();
 
@@ -38,17 +39,11 @@ function handleLogOut() {
   >
     <img :src="settingsIcon" alt="Settings" />
   </button>
-  <Transition>
-    <div class="popover" v-show="isPopoverOpened">
-      <button type="button" class="popover__button" @click="openDetailsModal('purchases')">
-        Purchases
-      </button>
-      <button type="button" class="popover__button" @click="openDetailsModal('transactions')">
-        Transactions
-      </button>
-      <button type="button" class="popover__button" @click="handleLogOut">Log out</button>
-    </div>
-  </Transition>
+  <Popover
+    :isPopoverOpened="isPopoverOpened"
+    @openDetailsModal="openDetailsModal"
+    @handleLogOut="handleLogOut"
+  />
   <Transition>
     <AppModal
       v-if="isDetailsModalOpened"
@@ -83,25 +78,6 @@ function handleLogOut() {
 .header__settings-button {
   background-color: $bg-light;
   border: 1px solid $border-dark;
-}
-
-.popover {
-  @include flex(column, flex-start, stretch);
-  width: 150px;
-  position: absolute;
-  top: 60px;
-  right: 70px;
-}
-
-.popover__button {
-  width: 100%;
-  height: 50px;
-  background-color: $bg-dark;
-  color: $text-light;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 20px;
-  cursor: pointer;
 }
 
 .tabs {
