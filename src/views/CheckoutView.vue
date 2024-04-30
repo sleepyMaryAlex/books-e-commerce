@@ -3,7 +3,7 @@ import { useUserStore } from '@/stores/user';
 import { useRouter } from 'vue-router';
 import { ref, onMounted, watch, computed } from 'vue';
 import { useTransactionStore } from '@/stores/transaction';
-import { formatDate } from '../utils/utils';
+import { format } from "date-fns";
 
 const router = useRouter();
 const userStore = useUserStore();
@@ -55,7 +55,7 @@ function handlePayButton() {
     phoneNumber,
     cardNumber,
     products: userStore.currentUser.cart,
-    date: formatDate(new Date()),
+    date: format(new Date(), "dd-MM-yyyy"),
     totalPrice: calculateTotalPrice()
   };
   transactionStore.addTransaction(transaction, userStore.currentUser.id);
