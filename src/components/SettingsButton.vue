@@ -38,33 +38,37 @@ function handleLogOut() {
   >
     <img :src="settingsIcon" alt="Settings" />
   </button>
-  <div class="popover" :class="{ opened: isPopoverOpened }">
-    <button type="button" class="popover__button" @click="openDetailsModal('purchases')">
-      Purchases
-    </button>
-    <button type="button" class="popover__button" @click="openDetailsModal('transactions')">
-      Transactions
-    </button>
-    <button type="button" class="popover__button" @click="handleLogOut">Log out</button>
-  </div>
-  <AppModal
-    v-if="isDetailsModalOpened"
-    :isDetailsModalOpened="isDetailsModalOpened"
-    @closeDetailsModalOpened="isDetailsModalOpened = false"
-  >
-    <template #header>
-      <div class="tabs"></div>
-      <button
-        v-for="(_, tab) in tabs"
-        :key="tab"
-        :class="['tabs__button', { active: currentTab === tab }]"
-        @click="currentTab = tab"
-      >
-        {{ tab }}
+  <Transition>
+    <div class="popover" v-show="isPopoverOpened">
+      <button type="button" class="popover__button" @click="openDetailsModal('purchases')">
+        Purchases
       </button>
-    </template>
-    <template #content><component :is="tabs[currentTab]"></component></template>
-  </AppModal>
+      <button type="button" class="popover__button" @click="openDetailsModal('transactions')">
+        Transactions
+      </button>
+      <button type="button" class="popover__button" @click="handleLogOut">Log out</button>
+    </div>
+  </Transition>
+  <Transition>
+    <AppModal
+      v-if="isDetailsModalOpened"
+      :isDetailsModalOpened="isDetailsModalOpened"
+      @closeDetailsModalOpened="isDetailsModalOpened = false"
+    >
+      <template #header>
+        <div class="tabs"></div>
+        <button
+          v-for="(_, tab) in tabs"
+          :key="tab"
+          :class="['tabs__button', { active: currentTab === tab }]"
+          @click="currentTab = tab"
+        >
+          {{ tab }}
+        </button>
+      </template>
+      <template #content><component :is="tabs[currentTab]"></component></template>
+    </AppModal>
+  </Transition>
 </template>
 
 <style lang="scss" scoped>
@@ -83,15 +87,10 @@ function handleLogOut() {
 
 .popover {
   @include flex(column, flex-start, stretch);
-  display: none;
   width: 150px;
   position: absolute;
   top: 60px;
   right: 70px;
-
-  &.opened {
-    display: flex;
-  }
 }
 
 .popover__button {

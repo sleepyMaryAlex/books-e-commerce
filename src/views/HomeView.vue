@@ -14,9 +14,11 @@ provide('isAuthModalOpened', { isAuthModalOpened, setAuthModalOpened });
 </script>
 
 <template>
-  <AppHeader />
-  <main>
-    <AppHero />
-    <AppProducts />
-  </main>
+  <div>
+    <AppHeader />
+    <main>
+      <AppHero />
+      <AppProducts />
+    </main>
+  </div>
 </template>

@@ -36,26 +36,28 @@ function handleCartButtonClick() {
           <img src="../assets/icons/shopping-cart.svg" alt="Shopping cart" />
         </button>
       </div>
-      <AppModal v-if="isAuthModalOpened">
-        <template #header>
-          <h2 class="modal__heading">{{ access === 'log-in' ? 'Log In' : 'Sign Up' }}</h2>
-        </template>
-        <template #content>
-          <AuthForm :access="access" @setAccess="(a) => (access = a)" />
-        </template>
-        <template #footer>
-          <div
-            class="modal__switch-button"
-            @click="access === 'log-in' ? (access = 'sign-up') : (access = 'log-in')"
-          >
-            {{
-              access === 'log-in'
-                ? 'Don’t have an account? Sign up'
-                : 'Already have an account? Log In'
-            }}
-          </div>
-        </template>
-      </AppModal>
+      <Transition>
+        <AppModal v-if="isAuthModalOpened">
+          <template #header>
+            <h2 class="modal__heading">{{ access === 'log-in' ? 'Log In' : 'Sign Up' }}</h2>
+          </template>
+          <template #content>
+            <AuthForm :access="access" @setAccess="(a) => (access = a)" />
+          </template>
+          <template #footer>
+            <div
+              class="modal__switch-button"
+              @click="access === 'log-in' ? (access = 'sign-up') : (access = 'log-in')"
+            >
+              {{
+                access === 'log-in'
+                  ? 'Don’t have an account? Sign up'
+                  : 'Already have an account? Log In'
+              }}
+            </div>
+          </template>
+        </AppModal>
+      </Transition>
     </div>
   </header>
 </template>

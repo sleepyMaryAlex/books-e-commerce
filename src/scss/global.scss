@@ -17,3 +17,13 @@ $padding-x-mobile: 0 20px;
   justify-content: $justify;
   align-items: $align;
 }
+
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
