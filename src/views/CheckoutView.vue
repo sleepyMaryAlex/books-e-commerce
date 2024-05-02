@@ -144,9 +144,7 @@ function handlePayButton() {
 }
 
 .checkout__heading {
-  font-size: 40px;
-  font-weight: 600;
-  line-height: 48px;
+  @include font(40px, 600, 48px);
   text-transform: uppercase;
 }
 
@@ -156,9 +154,7 @@ function handlePayButton() {
   border-spacing: 20px;
 
   & th {
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 17px;
+    @include font(14px, 500, 17px);
     color: $text-pale-dark;
     text-transform: uppercase;
     text-align: left;
@@ -166,9 +162,7 @@ function handlePayButton() {
   }
 
   & td {
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 20px;
+    @include font(16px, 500, 20px);
     text-transform: uppercase;
     min-width: 80px;
     padding: 20px 0;
@@ -179,9 +173,7 @@ function handlePayButton() {
   padding: 20px 32px;
   color: $bg-light;
   background-color: $bg-dark;
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 22px;
+  @include font(18px, 500, 22px);
   cursor: pointer;
 }
 

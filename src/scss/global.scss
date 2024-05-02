@@ -18,6 +18,12 @@ $padding-x-mobile: 0 20px;
   align-items: $align;
 }
 
+@mixin font($size, $weight, $lineHeight) {
+  font-size: $size;
+  font-weight: $weight;
+  line-height: $lineHeight;
+}
+
 .v-enter-active,
 .v-leave-active {
   transition: opacity 0.3s ease;

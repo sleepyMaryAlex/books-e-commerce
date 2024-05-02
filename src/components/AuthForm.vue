@@ -161,9 +161,7 @@ function handleSubmit() {
 .form__label,
 .form__checkbox-label,
 .form__prompt {
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 17px;
+  @include font(14px, 500, 17px);
 }
 
 .form__checkbox-field {
@@ -225,9 +223,7 @@ function handleSubmit() {
   width: 100%;
   height: 48px;
   color: $text-light;
-  font-weight: 500;
-  line-height: 20px;
-  font-size: 16px;
+  @include font(16px, 500, 20px);
   background-color: $bg-dark;
   cursor: pointer;
 
@@ -258,8 +254,7 @@ function handleSubmit() {
   cursor: pointer;
 
   & span {
-    font-weight: 500;
-    line-height: 20px;
+    @include font(16px, 500, 20px);
   }
 }
 

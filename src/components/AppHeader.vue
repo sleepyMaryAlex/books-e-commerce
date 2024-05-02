@@ -8,13 +8,13 @@ import { useRouter } from 'vue-router';
 
 const router = useRouter();
 
-const store = useUserStore();
+const userStore = useUserStore();
 
 const { isAuthModalOpened, setAuthModalOpened } = inject('isAuthModalOpened');
 const access = ref('log-in');
 
 function handleCartButtonClick() {
-  store.currentUser ? router.push('/cart') : setAuthModalOpened(true);
+  userStore.currentUser ? router.push('/cart') : setAuthModalOpened(true);
 }
 </script>
 
@@ -24,7 +24,7 @@ function handleCartButtonClick() {
       <div class="header__logo">Books</div>
       <div class="header__buttons">
         <button
-          v-if="!store.currentUser"
+          v-if="!userStore.currentUser"
           type="button"
           class="header__log-in-button"
           @click="setAuthModalOpened(true)"
@@ -75,9 +75,7 @@ function handleCartButtonClick() {
 }
 
 .header__logo {
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 30px;
+  @include font(24px, 700, 30px);
 }
 
 .header__buttons {
@@ -102,14 +100,11 @@ function handleCartButtonClick() {
 }
 
 .modal__heading {
-  font-size: 32px;
-  font-weight: 600;
-  line-height: 40px;
+  @include font(32px, 600, 40px);
 }
 
 .modal__switch-button {
-  font-weight: 500;
-  line-height: 20px;
+  @include font(16px, 500, 20px);
   cursor: pointer;
   border-bottom: 1px solid $text-dark;
 }

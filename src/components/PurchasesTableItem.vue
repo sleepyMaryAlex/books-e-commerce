@@ -84,9 +84,7 @@ function handleBuyAgainButtonClick(book) {
 
 <style lang="scss" scoped>
 .table__cell {
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 20px;
+  @include font(16px, 500, 20px);
   text-transform: uppercase;
   min-width: 80px;
   padding: 20px 0;

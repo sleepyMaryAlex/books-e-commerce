@@ -89,9 +89,7 @@ function handleLogOut() {
   height: 62px;
   cursor: pointer;
   text-transform: capitalize;
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 22px;
+  @include font(18px, 500, 22px);
   color: $text-pale-dark;
   transition: all 0.3s;
 

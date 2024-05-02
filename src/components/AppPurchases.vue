@@ -31,9 +31,7 @@ const userStore = useUserStore();
   border-spacing: 20px;
 
   & th {
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 17px;
+    @include font(14px, 500, 17px);
     color: $text-pale-dark;
     text-transform: uppercase;
     text-align: left;

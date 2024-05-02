@@ -111,9 +111,7 @@ function handleRemoveButtonClick(bookId) {
 }
 
 .cart__heading {
-  font-size: 40px;
-  font-weight: 600;
-  line-height: 48px;
+  @include font(40px, 600, 48px);
   text-transform: uppercase;
 }
 
@@ -123,9 +121,7 @@ function handleRemoveButtonClick(bookId) {
   border-spacing: 20px;
 
   & th {
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 17px;
+    @include font(14px, 500, 17px);
     color: $text-pale-dark;
     text-transform: uppercase;
     text-align: left;
@@ -133,9 +129,7 @@ function handleRemoveButtonClick(bookId) {
   }
 
   & td {
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 20px;
+    @include font(16px, 500, 20px);
     text-transform: uppercase;
     min-width: 80px;
     padding: 20px 0;
@@ -143,9 +137,7 @@ function handleRemoveButtonClick(bookId) {
 }
 
 .table__remove-button {
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 17px;
+  @include font(14px, 400, 17px);
   font-style: italic;
   text-decoration: underline;
   cursor: pointer;
@@ -158,8 +150,7 @@ function handleRemoveButtonClick(bookId) {
   min-height: 40px;
   margin-bottom: 0;
   padding: 16px;
-  font-size: 14px;
-  line-height: 20px;
+  @include font(14px, 400, 20px);
   transition:
     background-color 0.2s,
     border-color 0.2s;
@@ -174,15 +165,12 @@ function handleRemoveButtonClick(bookId) {
   padding: 20px 32px;
   color: $bg-light;
   background-color: $bg-dark;
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 22px;
+  @include font(18px, 500, 22px);
   cursor: pointer;
 }
 
 .cart__message {
-  font-size: 20px;
-  line-height: 22px;
+  @include font(20px, 500, 22px);
 }
 
 @media (max-width: 767px) {

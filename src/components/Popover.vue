@@ -35,9 +35,7 @@ const emit = defineEmits(['openDetailsModal', 'handleLogOut']);
   height: 50px;
   background-color: $bg-dark;
   color: $text-light;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 20px;
+  @include font(16px, 500, 20px);
   cursor: pointer;
 }
 </style>

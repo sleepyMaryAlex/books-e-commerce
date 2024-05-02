@@ -110,9 +110,7 @@ function isBookAddedToCart(id) {
 }
 
 .products__heading {
-  font-size: 40px;
-  font-weight: 600;
-  line-height: 48px;
+  @include font(40px, 600, 48px);
   text-transform: uppercase;
 }
 
@@ -164,31 +162,23 @@ function isBookAddedToCart(id) {
 
 .product__title {
   text-transform: uppercase;
-  font-size: 24px;
-  font-weight: 500;
-  line-height: 29px;
+  @include font(24px, 500, 30px);
 }
 
 .product__details {
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 160%;
+  @include font(16px, 400, 25px);
   color: $text-pale-dark;
 }
 
 .product__price {
-  font-size: 24px;
-  font-weight: 600;
-  line-height: 29px;
+  @include font(24px, 600, 30px);
 }
 
 .product__add-to-cart-button {
   width: 134px;
   height: 48px;
   border: 1px solid $border-dark;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 19px;
+  @include font(16px, 400, 20px);
   cursor: pointer;
 
   &.disabled {
@@ -211,8 +201,7 @@ function isBookAddedToCart(id) {
   }
 
   .products__heading {
-    font-size: 30px;
-    line-height: 40px;
+    @include font(30px, 600, 40px);
   }
 }
 </style>

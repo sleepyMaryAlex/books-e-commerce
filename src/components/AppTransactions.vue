@@ -36,9 +36,7 @@ const userStore = useUserStore();
   border-spacing: 20px;
 
   & th {
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 17px;
+    @include font(14px, 500, 17px);
     color: $text-pale-dark;
     text-transform: uppercase;
     text-align: left;
@@ -46,9 +44,7 @@ const userStore = useUserStore();
   }
 
   & td {
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 20px;
+    @include font(16px, 500, 20px);
     text-transform: uppercase;
     min-width: 80px;
     padding: 20px 0;

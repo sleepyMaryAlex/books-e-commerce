@@ -48,9 +48,7 @@ function handleButtonClick() {
 }
 
 .hero__heading {
-  font-size: 80px;
-  font-weight: 600;
-  line-height: 100px;
+  @include font(80px, 600, 100px);
   text-transform: uppercase;
 }
 
@@ -61,16 +59,13 @@ function handleButtonClick() {
   @include flex(column, center, center);
   color: $bg-light;
   background-color: $bg-dark;
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 22px;
+  @include font(18px, 500, 22px);
   cursor: pointer;
 }
 
 @media (max-width: 991px) {
   .hero__heading {
-    font-size: 50px;
-    line-height: 80px;
+    @include font(50px, 600, 80px);
   }
 }
 
@@ -80,8 +75,7 @@ function handleButtonClick() {
   }
 
   .hero__heading {
-    font-size: 40px;
-    line-height: 60px;
+    @include font(40px, 600, 60px);
   }
 }
 </style>
