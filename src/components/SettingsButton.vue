@@ -1,7 +1,7 @@
 <script setup>
 import { ref, inject } from 'vue';
 import { useUserStore } from '@/stores/user';
-import settingsIcon from '../assets/icons/settings.svg';
+import settingsIcon from '../assets/images/icons/settings.svg';
 import AppModal from './AppModal.vue';
 import AppPurchases from './AppPurchases.vue';
 import AppTransactions from './AppTransactions.vue';

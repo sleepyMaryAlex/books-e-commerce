@@ -1,13 +1,13 @@
-import theWorldAccordingToCarl from '../assets/images/the-world-according-to-carl.jpg';
-import collectingFashionBook from '../assets/images/collecting-fashion-book.jpg';
-import arrangingThingsColinKingBook from '../assets/images/arranging-things-colin-king-book.jpg';
-import karlLagerfeldALifeInHousesBook from '../assets/images/karl-lagerfeld-a-life-in-houses-book.jpg';
-import theRiseOfDavidBowieMickRockBook from '../assets/images/the-rise-of-david-bowie-mick-rock-book.jpg';
-import pattySmithABookOfDays from '../assets/images/patty-smith-a-book-of-days.jpg';
-import aHardDaysNightBook from '../assets/images/a-hard-days-night-book.jpg';
-import aWeekAbroadMarseilleBook from '../assets/images/a-week-abroad-marseille-book.jpg';
-import newYorkCityGuideByLouisVuitton from '../assets/images/new-york-city-guide-by-louis-vuitton.jpg';
-import theSpanishHomeKitchenBook from '../assets/images/the-spanish-home-kitchen-book.jpg';
+import theWorldAccordingToCarl from '../assets/images/books/the-world-according-to-carl.jpg';
+import collectingFashionBook from '../assets/images/books/collecting-fashion-book.jpg';
+import arrangingThingsColinKingBook from '../assets/images/books/arranging-things-colin-king-book.jpg';
+import karlLagerfeldALifeInHousesBook from '../assets/images/books/karl-lagerfeld-a-life-in-houses-book.jpg';
+import theRiseOfDavidBowieMickRockBook from '../assets/images/books/the-rise-of-david-bowie-mick-rock-book.jpg';
+import pattySmithABookOfDays from '../assets/images/books/patty-smith-a-book-of-days.jpg';
+import aHardDaysNightBook from '../assets/images/books/a-hard-days-night-book.jpg';
+import aWeekAbroadMarseilleBook from '../assets/images/books/a-week-abroad-marseille-book.jpg';
+import newYorkCityGuideByLouisVuitton from '../assets/images/books/new-york-city-guide-by-louis-vuitton.jpg';
+import theSpanishHomeKitchenBook from '../assets/images/books/the-spanish-home-kitchen-book.jpg';
 
 const books = [
   {

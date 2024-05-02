@@ -55,10 +55,10 @@ function isBookAddedToCart(id) {
         <h2 class="products__heading">Buy product</h2>
         <div class="products__arrows">
           <button class="products__arrow" @click="carousel.prev">
-            <img src="../assets/icons/arrow-left.svg" alt="Arrow left" />
+            <img src="../assets/images/icons/arrow-left.svg" alt="Arrow left" />
           </button>
           <button class="products__arrow" @click="carousel.next">
-            <img src="../assets/icons/arrow-right.svg" alt="Arrow right" />
+            <img src="../assets/images/icons/arrow-right.svg" alt="Arrow right" />
           </button>
         </div>
       </div>

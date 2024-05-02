@@ -33,7 +33,7 @@ function handleCartButtonClick() {
         </button>
         <SettingsButton />
         <button type="button" class="header__cart-button" @click="handleCartButtonClick">
-          <img src="../assets/icons/shopping-cart.svg" alt="Shopping cart" />
+          <img src="../assets/images/icons/shopping-cart.svg" alt="Shopping cart" />
         </button>
       </div>
       <Transition>

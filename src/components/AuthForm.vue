@@ -1,6 +1,6 @@
 <script setup>
 import { defineProps, defineEmits, ref, watch, inject, computed } from 'vue';
-import googleIcon from '../assets/icons/google.svg';
+import googleIcon from '../assets/images/icons/google.svg';
 import { useUserStore } from '@/stores/user';
 
 const submitErrorMessage = ref('');
