@@ -149,7 +149,7 @@ function handleSubmit() {
   border: 1px solid $border-pale;
   padding: 0 10px;
   font-family: inherit;
-  transition: all 0.3s;
+  transition: border 0.3s;
 
   &:focus {
     outline: none !important;
@@ -271,14 +271,7 @@ function handleSubmit() {
 
 @media (max-width: 767px) {
   .form__input {
-    width: 350px;
-  }
-}
-
-@media (max-width: 478px) {
-  .form__input,
-  .form__submit-error-message {
-    width: 250px;
+    width: 100%;
   }
 }
 </style>

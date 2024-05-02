@@ -67,6 +67,7 @@ onClickOutside(modalContainer, () => {
 
 @media (max-width: 767px) {
   .modal__container {
+    width: 95%;
     min-height: 690px;
     padding: 45px 40px;
     gap: 40px;
