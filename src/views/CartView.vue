@@ -1,7 +1,7 @@
 <script setup>
 import '../assets/scss/pages/cart-view.scss';
-import { useUserStore } from '@/stores/user';
-import { useCartStore } from '@/stores/cart';
+import { useUserStore } from '@/store/user';
+import { useCartStore } from '@/store/cart';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();

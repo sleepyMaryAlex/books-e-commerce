@@ -1,7 +1,7 @@
 <script setup>
 import '../assets/scss/components/purchases-table-item.scss';
 import { ref } from 'vue';
-import { useCartStore } from '@/stores/cart';
+import { useCartStore } from '@/store/cart';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();

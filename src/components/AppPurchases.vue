@@ -1,6 +1,6 @@
 <script setup>
 import '../assets/scss/components/app-purchases.scss';
-import { useUserStore } from '@/stores/user';
+import { useUserStore } from '@/store/user';
 import PurchasesTableItem from './PurchasesTableItem.vue';
 
 const userStore = useUserStore();

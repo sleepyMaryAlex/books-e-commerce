@@ -2,7 +2,7 @@
 import '../assets/scss/components/auth-form.scss';
 import { defineProps, defineEmits, ref, watch, inject, computed } from 'vue';
 import googleIcon from '../assets/images/icons/google.svg';
-import { useUserStore } from '@/stores/user';
+import { useUserStore } from '@/store/user';
 
 const submitErrorMessage = ref('');
 const emailFeedbackMessage = ref('');

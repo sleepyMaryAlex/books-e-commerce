@@ -1,7 +1,7 @@
 <script setup>
 import '../assets/scss/components/settings-button.scss';
 import { ref } from 'vue';
-import { useUserStore } from '@/stores/user';
+import { useUserStore } from '@/store/user';
 import settingsIcon from '../assets/images/icons/settings.svg';
 import AppModal from './AppModal.vue';
 import AppPurchases from './AppPurchases.vue';

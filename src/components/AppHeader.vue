@@ -4,7 +4,7 @@ import { ref, inject } from 'vue';
 import AppModal from './AppModal.vue';
 import AuthForm from './AuthForm.vue';
 import SettingsButton from './SettingsButton.vue';
-import { useUserStore } from '@/stores/user';
+import { useUserStore } from '@/store/user';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();

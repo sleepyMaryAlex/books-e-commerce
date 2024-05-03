@@ -1,6 +1,6 @@
 <script setup>
 import '../assets/scss/components/app-transactions.scss';
-import { useUserStore } from '@/stores/user';
+import { useUserStore } from '@/store/user';
 const userStore = useUserStore();
 </script>
 

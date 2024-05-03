@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
-import { useUserStore } from '@/stores/user';
-import { useCartStore } from '@/stores/cart';
+import { useUserStore } from '@/store/user';
+import { useCartStore } from '@/store/cart';
 
 export const useTransactionStore = defineStore('transaction', () => {
   const userStore = useUserStore();

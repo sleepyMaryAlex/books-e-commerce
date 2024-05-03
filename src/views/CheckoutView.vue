@@ -1,9 +1,9 @@
 <script setup>
 import '../assets/scss/pages/checkout-view.scss';
-import { useUserStore } from '@/stores/user';
+import { useUserStore } from '@/store/user';
 import { useRouter } from 'vue-router';
 import { ref, watch, computed } from 'vue';
-import { useTransactionStore } from '@/stores/transaction';
+import { useTransactionStore } from '@/store/transaction';
 import { format } from 'date-fns';
 
 const router = useRouter();

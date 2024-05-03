@@ -1,6 +1,6 @@
 <script setup>
 import '../assets/scss/components/app-hero.scss';
-import { useUserStore } from '@/stores/user';
+import { useUserStore } from '@/store/user';
 import { inject } from 'vue';
 
 const store = useUserStore();

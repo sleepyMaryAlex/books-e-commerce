@@ -4,11 +4,8 @@ import books from '../app/books';
 import { ref, inject } from 'vue';
 import 'vue3-carousel/dist/carousel.css';
 import { Carousel, Slide } from 'vue3-carousel';
-import { useUserStore } from '@/stores/user';
-import { useCartStore } from '@/stores/cart';
-import { useRouter } from 'vue-router';
-
-const router = useRouter();
+import { useUserStore } from '@/store/user';
+import { useCartStore } from '@/store/cart';
 
 const userStore = useUserStore();
 const cartStore = useCartStore();
@@ -18,7 +15,6 @@ const { setAuthModalOpened } = inject('isAuthModalOpened');
 function handleAddToCartButtonClick(book) {
   if (userStore.currentUser) {
     cartStore.addToCart(book, 1);
-    router.push('/cart');
   } else {
     setAuthModalOpened(true);
   }
