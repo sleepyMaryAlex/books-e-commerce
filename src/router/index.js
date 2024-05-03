@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '../views/HomeView.vue';
+import { useUserStore } from '@/store/user';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -29,4 +30,10 @@ const router = createRouter({
   ]
 });
 
+router.beforeEach((to) => {
+  const userStore = useUserStore();
+  if (to.meta.requiresAuth && !userStore.currentUser) {
+    return { name: 'Home' };
+  }
+});
 export default router;
