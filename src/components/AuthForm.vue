@@ -64,7 +64,7 @@ const isDisabled = computed(() => {
   );
 });
 
-function handleSubmit() {
+const handleSubmit = () => {
   const user = userStore.findUser(email.value, password.value);
   if (props.access === 'log-in') {
     user
@@ -75,9 +75,7 @@ function handleSubmit() {
       ? (submitErrorMessage.value = 'You already have an account. Please log in')
       : userStore.signup(email.value, password.value);
   }
-  //    setModalOpened(false);
-  // emit('setAccess', 'log-in');
-}
+};
 </script>
 
 <template>

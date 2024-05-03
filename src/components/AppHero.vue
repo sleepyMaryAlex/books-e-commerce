@@ -7,9 +7,9 @@ const store = useUserStore();
 
 const { setModalOpened } = inject('isModalOpened');
 
-function handleButtonClick() {
+const handleButtonClick = () => {
   setModalOpened(true);
-}
+};
 </script>
 
 <template>

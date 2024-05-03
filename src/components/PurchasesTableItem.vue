@@ -11,10 +11,10 @@ defineProps(['transaction']);
 
 const isDetailsOpened = ref(false);
 
-function handleBuyAgainButtonClick(book) {
+const handleBuyAgainButtonClick = (book) => {
   cartStore.addToCart(book, 1);
   router.push('/cart');
-}
+};
 </script>
 
 <template>

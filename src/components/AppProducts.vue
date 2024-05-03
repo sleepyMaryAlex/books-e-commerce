@@ -12,13 +12,13 @@ const cartStore = useCartStore();
 
 const { setModalOpened } = inject('isModalOpened');
 
-function handleAddToCartButtonClick(book) {
+const handleAddToCartButtonClick = (book) => {
   if (userStore.currentUser) {
     cartStore.addToCart(book, 1);
   } else {
     setModalOpened(true);
   }
-}
+};
 
 const carousel = ref(null);
 
@@ -37,12 +37,12 @@ const breakpoints = {
   }
 };
 
-function isBookAddedToCart(id) {
+const isBookAddedToCart = (id) => {
   if (userStore.currentUser && userStore.currentUser.cart) {
     return userStore.currentUser.cart.find((cartItem) => cartItem.book.id === id) ? true : false;
   }
   return false;
-}
+};
 </script>
 
 <template>

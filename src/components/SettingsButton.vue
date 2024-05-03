@@ -19,16 +19,16 @@ const tabs = {
   transactions: AppTransactions
 };
 
-function openDetailsModal(tab) {
+const openDetailsModal = (tab) => {
   currentTab.value = tab;
   isPopoverOpened.value = false;
   setModalOpened(true);
-}
+};
 
-function handleLogOut() {
+const handleLogOut = () => {
   userStore.deleteCurrentUser();
   isPopoverOpened.value = false;
-}
+};
 </script>
 
 <template>

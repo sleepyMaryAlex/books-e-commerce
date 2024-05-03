@@ -45,13 +45,13 @@ const isDisabled = computed(() => {
   );
 });
 
-function calculateTotalPrice() {
+const calculateTotalPrice = () => {
   return userStore.currentUser.cart
     .reduce((total, current) => total + Number(current.book.price * current.quantity), 0)
     .toFixed(2);
-}
+};
 
-function handlePayButton() {
+const handlePayButton = () => {
   const transaction = {
     phoneNumber,
     cardNumber,
@@ -61,7 +61,7 @@ function handlePayButton() {
   };
   transactionStore.addTransaction(transaction, userStore.currentUser.id);
   isPaymentSuccessful.value = true;
-}
+};
 </script>
 
 <template>

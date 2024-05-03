@@ -7,47 +7,47 @@ export const useUserStore = defineStore('user', () => {
   const currentUser = ref(getFromLocalStorage('piniaState')?.currentUser || null);
   const usersData = ref(getFromLocalStorage('piniaState')?.usersData || []);
 
-  function addCurrentUser(userData) {
+  const addCurrentUser = (userData) => {
     currentUser.value = userData;
-  }
+  };
 
-  function deleteCurrentUser() {
+  const deleteCurrentUser = () => {
     currentUser.value = null;
-  }
+  };
 
-  function updateCurrentUser(payload) {
+  const updateCurrentUser = (payload) => {
     for (const property in payload) {
       currentUser.value[property] = payload[property];
     }
-  }
+  };
 
-  function addUserToUsersData(userData) {
+  const addUserToUsersData = (userData) => {
     usersData.value.push(userData);
     addCurrentUser(userData);
-  }
+  };
 
-  function findUser(email, password) {
+  const findUser = (email, password) => {
     return usersData.value.find((user) => user.email === email && user.password === password);
-  }
+  };
 
-  function getUserById(id) {
+  const getUserById = (id) => {
     return usersData.value.find((user) => user.id === id);
-  }
+  };
 
-  function updateUser(id, payload) {
+  const updateUser = (id, payload) => {
     const user = getUserById(id);
     for (const property in payload) {
       user[property] = payload[property];
     }
-  }
+  };
 
-  function login(id, isRemember) {
+  const login = (id, isRemember) => {
     const user = getUserById(id);
     updateUser(id, { isRemember });
     addCurrentUser(user);
-  }
+  };
 
-  function signup(email, password) {
+  const signup = (email, password) => {
     const newUser = {
       id: uuidv4(),
       email: email,
@@ -57,7 +57,7 @@ export const useUserStore = defineStore('user', () => {
       transactions: []
     };
     addUserToUsersData(newUser);
-  }
+  };
 
   return {
     currentUser,

@@ -14,9 +14,9 @@ const userStore = useUserStore();
 const { isModalOpened, setModalOpened } = inject('isModalOpened');
 const access = ref('log-in');
 
-function handleCartButtonClick() {
+const handleCartButtonClick = () => {
   userStore.currentUser ? router.push('/cart') : setModalOpened(true);
-}
+};
 </script>
 
 <template>

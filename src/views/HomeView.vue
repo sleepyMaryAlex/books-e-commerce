@@ -6,9 +6,9 @@ import { ref, provide } from 'vue';
 
 const isModalOpened = ref(false);
 
-function setModalOpened(isOpen) {
+const setModalOpened = (isOpen) => {
   isModalOpened.value = isOpen;
-}
+};
 
 provide('isModalOpened', { isModalOpened, setModalOpened });
 </script>

@@ -8,17 +8,17 @@ const router = useRouter();
 const userStore = useUserStore();
 const cartStore = useCartStore();
 
-function handleQuantityChange(bookId, value) {
+const handleQuantityChange = (bookId, value) => {
   cartStore.updateCart(bookId, value);
-}
+};
 
-function handleEmptyCartButtonClick() {
+const handleEmptyCartButtonClick = () => {
   cartStore.emptyCart(userStore.currentUser.id);
-}
+};
 
-function handleRemoveButtonClick(bookId) {
+const handleRemoveButtonClick = (bookId) => {
   cartStore.deleteFromCart(bookId);
-}
+};
 </script>
 
 <template>
