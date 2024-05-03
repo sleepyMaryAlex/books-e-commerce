@@ -9,7 +9,6 @@
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
   @include flex(column, center, center);
 }
 
@@ -18,16 +17,6 @@
   padding: 40px 56px;
   background-color: $bg-light;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
-  @include flex(column, space-between, stretch);
-  gap: 40px;
-
-  &.modal__container_details {
-    @include flex(column, flex-start, stretch);
-  }
-}
-
-.modal__footer {
-  @include flex(row, center, stretch);
 }
 
 @media (max-width: 767px) {

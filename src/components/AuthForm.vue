@@ -8,24 +8,27 @@ const submitErrorMessage = ref('');
 const emailFeedbackMessage = ref('');
 const passwordFeedbackMessage = ref('');
 
-const store = useUserStore();
+const userStore = useUserStore();
 
-const { setAuthModalOpened } = inject('isAuthModalOpened');
+const { setModalOpened } = inject('isModalOpened');
 const props = defineProps(['access']);
 const emit = defineEmits(['setAccess']);
 
-const email = ref(store.usersData.findLast((user) => user.isRemember === true)?.email || '');
-const password = ref(store.usersData.findLast((user) => user.isRemember === true)?.password || '');
+const email = ref(userStore.usersData.findLast((user) => user.isRemember === true)?.email || '');
+const password = ref(
+  userStore.usersData.findLast((user) => user.isRemember === true)?.password || ''
+);
 const isRemember = ref(
-  store.usersData.findLast((user) => user.isRemember === true)?.isRemember || false
+  userStore.usersData.findLast((user) => user.isRemember === true)?.isRemember || false
 );
 
 watch(
-  () => store.currentUser,
+  () => userStore.currentUser,
   () => {
-    setAuthModalOpened(false);
+    setModalOpened(false);
     emit('setAccess', 'log-in');
-  }
+  },
+  { flush: 'sync' }
 );
 
 watch([email, password, () => props.access], () => {
@@ -62,16 +65,18 @@ const isDisabled = computed(() => {
 });
 
 function handleSubmit() {
-  const user = store.findUser(email.value, password.value);
+  const user = userStore.findUser(email.value, password.value);
   if (props.access === 'log-in') {
     user
-      ? store.login(user.id, isRemember.value)
+      ? userStore.login(user.id, isRemember.value)
       : (submitErrorMessage.value = 'You don’t have an account. Please sign up');
   } else if (props.access === 'sign-up') {
     user
       ? (submitErrorMessage.value = 'You already have an account. Please log in')
-      : store.signup(email.value, password.value);
+      : userStore.signup(email.value, password.value);
   }
+  //    setModalOpened(false);
+  // emit('setAccess', 'log-in');
 }
 </script>
 

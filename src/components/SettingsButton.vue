@@ -1,6 +1,6 @@
 <script setup>
 import '../assets/scss/components/settings-button.scss';
-import { ref } from 'vue';
+import { ref, inject } from 'vue';
 import { useUserStore } from '@/store/user';
 import settingsIcon from '../assets/images/icons/settings.svg';
 import AppModal from './AppModal.vue';
@@ -8,10 +8,10 @@ import AppPurchases from './AppPurchases.vue';
 import AppTransactions from './AppTransactions.vue';
 import AppPopover from './AppPopover.vue';
 
-const store = useUserStore();
+const userStore = useUserStore();
 
 const isPopoverOpened = ref(false);
-const isDetailsModalOpened = ref(false);
+const { isModalOpened, setModalOpened } = inject('isModalOpened');
 
 const currentTab = ref('purchases');
 const tabs = {
@@ -21,19 +21,19 @@ const tabs = {
 
 function openDetailsModal(tab) {
   currentTab.value = tab;
-  isDetailsModalOpened.value = true;
   isPopoverOpened.value = false;
+  setModalOpened(true);
 }
 
 function handleLogOut() {
-  store.deleteCurrentUser();
+  userStore.deleteCurrentUser();
   isPopoverOpened.value = false;
 }
 </script>
 
 <template>
   <button
-    v-if="store.currentUser"
+    v-if="userStore.currentUser"
     type="button"
     class="header__settings-button"
     @click="isPopoverOpened = !isPopoverOpened"
@@ -46,12 +46,8 @@ function handleLogOut() {
     @handleLogOut="handleLogOut"
   />
   <Transition>
-    <AppModal
-      v-if="isDetailsModalOpened"
-      :isDetailsModalOpened="isDetailsModalOpened"
-      @closeDetailsModalOpened="isDetailsModalOpened = false"
-    >
-      <template #header>
+    <AppModal v-if="isModalOpened && userStore.currentUser">
+      <div>
         <div class="tabs"></div>
         <button
           v-for="(_, tab) in tabs"
@@ -61,8 +57,8 @@ function handleLogOut() {
         >
           {{ tab }}
         </button>
-      </template>
-      <template #content><component :is="tabs[currentTab]"></component></template>
+      </div>
+      <div><component :is="tabs[currentTab]"></component></div>
     </AppModal>
   </Transition>
 </template>

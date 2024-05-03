@@ -5,10 +5,10 @@ import { inject } from 'vue';
 
 const store = useUserStore();
 
-const { setAuthModalOpened } = inject('isAuthModalOpened');
+const { setModalOpened } = inject('isModalOpened');
 
 function handleButtonClick() {
-  setAuthModalOpened(true);
+  setModalOpened(true);
 }
 </script>
 

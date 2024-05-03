@@ -10,13 +10,13 @@ import { useCartStore } from '@/store/cart';
 const userStore = useUserStore();
 const cartStore = useCartStore();
 
-const { setAuthModalOpened } = inject('isAuthModalOpened');
+const { setModalOpened } = inject('isModalOpened');
 
 function handleAddToCartButtonClick(book) {
   if (userStore.currentUser) {
     cartStore.addToCart(book, 1);
   } else {
-    setAuthModalOpened(true);
+    setModalOpened(true);
   }
 }
 

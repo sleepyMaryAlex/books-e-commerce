@@ -11,11 +11,11 @@ const router = useRouter();
 
 const userStore = useUserStore();
 
-const { isAuthModalOpened, setAuthModalOpened } = inject('isAuthModalOpened');
+const { isModalOpened, setModalOpened } = inject('isModalOpened');
 const access = ref('log-in');
 
 function handleCartButtonClick() {
-  userStore.currentUser ? router.push('/cart') : setAuthModalOpened(true);
+  userStore.currentUser ? router.push('/cart') : setModalOpened(true);
 }
 </script>
 
@@ -28,7 +28,7 @@ function handleCartButtonClick() {
           v-if="!userStore.currentUser"
           type="button"
           class="header__log-in-button"
-          @click="setAuthModalOpened(true)"
+          @click="setModalOpened(true)"
         >
           Log In
         </button>
@@ -38,14 +38,10 @@ function handleCartButtonClick() {
         </button>
       </div>
       <Transition>
-        <AppModal v-if="isAuthModalOpened">
-          <template #header>
+        <AppModal v-if="isModalOpened && !userStore.currentUser">
+          <div class="modal__content">
             <h2 class="modal__heading">{{ access === 'log-in' ? 'Log In' : 'Sign Up' }}</h2>
-          </template>
-          <template #content>
             <AuthForm :access="access" @setAccess="(a) => (access = a)" />
-          </template>
-          <template #footer>
             <div
               class="modal__switch-button"
               @click="access === 'log-in' ? (access = 'sign-up') : (access = 'log-in')"
@@ -56,7 +52,7 @@ function handleCartButtonClick() {
                   : 'Already have an account? Log In'
               }}
             </div>
-          </template>
+          </div>
         </AppModal>
       </Transition>
     </div>

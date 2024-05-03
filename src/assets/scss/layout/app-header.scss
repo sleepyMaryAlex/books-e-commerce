@@ -37,12 +37,19 @@
   cursor: pointer;
 }
 
+.modal__content {
+  height: 100%;
+  @include flex(column, space-between, stretch);
+  gap: 40px;
+}
+
 .modal__heading {
   @include font(32px, 600, 40px);
 }
 
 .modal__switch-button {
   @include font(16px, 500, 20px);
+  align-self: center;
   cursor: pointer;
   border-bottom: 1px solid $text-dark;
 }
