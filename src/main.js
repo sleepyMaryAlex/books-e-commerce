@@ -1,4 +1,4 @@
-import './scss/base.scss';
+import './assets/scss/base/base.scss';
 import { createApp, watch } from 'vue';
 import { createPinia } from 'pinia';
 const pinia = createPinia();

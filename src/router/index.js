@@ -21,7 +21,6 @@ const router = createRouter({
       component: () => import('../views/CheckoutView.vue'),
       meta: { requiresAuth: true }
     },
-    ,
     {
       path: '/:pathMatch(.*)*',
       name: 'NotFound',

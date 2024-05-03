@@ -1,4 +1,5 @@
 <script setup>
+import '../assets/scss/components/app-purchases.scss';
 import { useUserStore } from '@/stores/user';
 import PurchasesTableItem from './PurchasesTableItem.vue';
 
@@ -24,29 +25,3 @@ const userStore = useUserStore();
     </table>
   </div>
 </template>
-
-<style lang="scss" scoped>
-.table {
-  width: 100%;
-  border-spacing: 20px;
-
-  & th {
-    @include font(14px, 500, 17px);
-    color: $text-pale-dark;
-    text-transform: uppercase;
-    text-align: left;
-    padding: 20px 0;
-    width: 25%;
-  }
-
-  & .table__first-col {
-    width: 35%;
-  }
-}
-
-@media (max-width: 767px) {
-  .table {
-    border-spacing: 10px;
-  }
-}
-</style>

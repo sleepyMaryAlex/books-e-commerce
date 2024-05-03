@@ -1,7 +1,8 @@
 <script setup>
+import '../assets/scss/pages/checkout-view.scss';
 import { useUserStore } from '@/stores/user';
 import { useRouter } from 'vue-router';
-import { ref, onMounted, watch, computed } from 'vue';
+import { ref, watch, computed } from 'vue';
 import { useTransactionStore } from '@/stores/transaction';
 import { format } from 'date-fns';
 
@@ -132,107 +133,3 @@ function handlePayButton() {
     </div>
   </div>
 </template>
-
-<style lang="scss" scoped>
-.checkout__container {
-  min-height: 100vh;
-  @include flex(column, center, center);
-  gap: 40px;
-  padding: $padding-x-desktop;
-  padding-top: 40px;
-  padding-bottom: 40px;
-}
-
-.checkout__heading {
-  @include font(40px, 600, 48px);
-  text-transform: uppercase;
-}
-
-.table {
-  max-width: 1000px;
-  width: 100%;
-  border-spacing: 20px;
-
-  & th {
-    @include font(14px, 500, 17px);
-    color: $text-pale-dark;
-    text-transform: uppercase;
-    text-align: left;
-    padding: 20px 0;
-  }
-
-  & td {
-    @include font(16px, 500, 20px);
-    text-transform: uppercase;
-    min-width: 80px;
-    padding: 20px 0;
-  }
-}
-
-.checkout__button {
-  padding: 20px 32px;
-  color: $bg-light;
-  background-color: $bg-dark;
-  @include font(18px, 500, 22px);
-  cursor: pointer;
-}
-
-.checkout__button_submit {
-  &.disabled {
-    background-color: lighten($color: $bg-dark, $amount: 20);
-    cursor: auto;
-  }
-}
-
-.checkout__form {
-  @include flex(column, center, stretch);
-  gap: 24px;
-}
-
-.checkout__field {
-  @include flex(column, flex-start, stretch);
-  gap: 8px;
-  position: relative;
-}
-
-.checkout__feedback {
-  position: absolute;
-  right: 0;
-  padding: 4px;
-  background-color: $error-color;
-  font-size: 14px;
-}
-
-.checkout__input {
-  width: 280px;
-  height: 48px;
-  border: 1px solid $border-pale;
-  padding: 0 10px;
-  font-family: inherit;
-  transition: all 0.3s;
-
-  &:focus {
-    outline: none !important;
-    border: 1px solid $border-dark;
-    border-radius: none;
-  }
-}
-
-@media (max-width: 767px) {
-  .checkout__container {
-    padding: $padding-x-mobile;
-    padding-top: 40px;
-    padding-bottom: 40px;
-  }
-}
-
-@media (max-width: 478px) {
-  .table {
-    border-spacing: 15px;
-
-    & .table__title {
-      font-size: 14px;
-    }
-  }
-}
-</style>

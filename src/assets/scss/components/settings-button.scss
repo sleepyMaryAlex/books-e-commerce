@@ -1,0 +1,46 @@
+@import '../utils/variables';
+@import '../utils/mixins';
+
+.header__settings-button {
+  width: 48px;
+  height: 48px;
+  @include flex(row, center, center);
+  background-color: $bg-dark;
+  cursor: pointer;
+}
+
+.header__settings-button {
+  background-color: $bg-light;
+  border: 1px solid $border-dark;
+}
+
+.tabs {
+  width: 856px;
+}
+
+.tabs__button {
+  width: 50%;
+  height: 62px;
+  cursor: pointer;
+  text-transform: capitalize;
+  @include font(18px, 500, 22px);
+  color: $text-pale-dark;
+  transition: all 0.3s;
+
+  &.active {
+    color: $text-dark;
+    border-bottom: 1px solid $text-dark;
+  }
+}
+
+@media (max-width: 1060px) {
+  .tabs {
+    width: 600px;
+  }
+}
+
+@media (max-width: 767px) {
+  .tabs {
+    width: 100%;
+  }
+}

@@ -1,4 +1,5 @@
 <script setup>
+import '../assets/scss/layout/app-header.scss';
 import { ref, inject } from 'vue';
 import AppModal from './AppModal.vue';
 import AuthForm from './AuthForm.vue';
@@ -61,57 +62,3 @@ function handleCartButtonClick() {
     </div>
   </header>
 </template>
-
-<style lang="scss" scoped>
-.header__container {
-  height: 80px;
-  @include flex(row, space-between, center);
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: $padding-x-desktop;
-}
-
-.header__logo {
-  @include font(24px, 700, 30px);
-}
-
-.header__buttons {
-  @include flex(row, center, center);
-  gap: 24px;
-  position: relative;
-}
-
-.header__log-in-button {
-  width: 95px;
-  height: 48px;
-  border: 1px solid $border-dark;
-  cursor: pointer;
-}
-
-.header__cart-button {
-  width: 48px;
-  height: 48px;
-  @include flex(row, center, center);
-  background-color: $bg-dark;
-  cursor: pointer;
-}
-
-.modal__heading {
-  @include font(32px, 600, 40px);
-}
-
-.modal__switch-button {
-  @include font(16px, 500, 20px);
-  cursor: pointer;
-  border-bottom: 1px solid $text-dark;
-}
-
-@media (max-width: 767px) {
-  .header__container {
-    padding: $padding-x-mobile;
-  }
-}
-</style>

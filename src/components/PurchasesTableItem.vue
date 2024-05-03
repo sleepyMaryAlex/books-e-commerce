@@ -1,4 +1,5 @@
 <script setup>
+import '../assets/scss/components/purchases-table-item.scss';
 import { ref } from 'vue';
 import { useCartStore } from '@/stores/cart';
 import { useRouter } from 'vue-router';
@@ -81,50 +82,3 @@ function handleBuyAgainButtonClick(book) {
     </div>
   </td>
 </template>
-
-<style lang="scss" scoped>
-.table__cell {
-  @include font(16px, 500, 20px);
-  text-transform: uppercase;
-  min-width: 80px;
-  padding: 20px 0;
-  position: relative;
-
-  & div {
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-}
-
-.table__details-button {
-  display: inline;
-  text-transform: none;
-  color: $text-pale-dark;
-  border-bottom: 1px solid $text-pale-dark;
-  cursor: pointer;
-}
-
-.table__details {
-  opacity: 0;
-  height: 0;
-  padding-top: 10px;
-  transition: all 0.5s;
-  color: $text-pale-dark;
-  text-transform: none;
-  @include flex(column, flex-start, stretch);
-  gap: 10px;
-
-  &.active {
-    opacity: 1;
-    height: auto;
-  }
-}
-
-.table__buy-again-button {
-  cursor: pointer;
-}
-</style>

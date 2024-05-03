@@ -1,0 +1,110 @@
+@import '../utils/variables';
+@import '../utils/mixins';
+
+.cart__container {
+  min-height: 100vh;
+  @include flex(column, center, center);
+  gap: 40px;
+  padding: $padding-x-desktop;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.cart__heading {
+  @include font(40px, 600, 48px);
+  text-transform: uppercase;
+}
+
+.table {
+  max-width: 1000px;
+  width: 100%;
+  border-spacing: 20px;
+
+  & th {
+    @include font(14px, 500, 17px);
+    color: $text-pale-dark;
+    text-transform: uppercase;
+    text-align: left;
+    padding: 20px 0;
+  }
+
+  & td {
+    @include font(16px, 500, 20px);
+    text-transform: uppercase;
+    min-width: 80px;
+    padding: 20px 0;
+  }
+}
+
+.table__remove-button {
+  @include font(14px, 400, 17px);
+  font-style: italic;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.table__input {
+  background-color: rgba(17, 17, 17, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0);
+  width: 100px;
+  min-height: 40px;
+  margin-bottom: 0;
+  padding: 16px;
+  @include font(14px, 400, 20px);
+  transition:
+    background-color 0.2s,
+    border-color 0.2s;
+}
+
+.cart__buttons {
+  @include flex(row, center, center);
+  gap: 20px;
+}
+
+.cart__button {
+  padding: 20px 32px;
+  color: $bg-light;
+  background-color: $bg-dark;
+  @include font(18px, 500, 22px);
+  cursor: pointer;
+}
+
+.cart__message {
+  @include font(20px, 500, 22px);
+}
+
+@media (max-width: 767px) {
+  .cart__container {
+    padding: $padding-x-mobile;
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+}
+
+@media (max-width: 478px) {
+  .cart__buttons {
+    @include flex(column, center, center);
+    width: 100%;
+  }
+
+  .cart__button {
+    width: 100%;
+  }
+
+  .table {
+    border-spacing: 15px;
+
+    & td p {
+      font-size: 14px;
+    }
+
+    & .table__quantity {
+      min-width: auto;
+    }
+  }
+
+  .table__input {
+    width: 70px;
+    padding: 5px;
+  }
+}

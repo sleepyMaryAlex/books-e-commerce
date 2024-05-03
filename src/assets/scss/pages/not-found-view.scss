@@ -1,0 +1,74 @@
+@import '../utils/variables';
+@import '../utils/mixins';
+
+.not-found__container {
+  @include flex(column, center, center);
+  gap: 60px;
+  height: 100vh;
+}
+
+.not-found__return-button {
+  color: $text-light;
+  background-color: $bg-dark;
+  padding: 20px;
+  cursor: pointer;
+}
+
+.not-found__title {
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+.not-found__errors {
+  overflow: hidden;
+  @include flex(row, space-around, stretch);
+  width: 100%;
+  font-size: 85px;
+}
+
+.not-found__error {
+  margin: 15px 25px;
+  @include flex(row, flex-start, center);
+}
+
+.not-found__first {
+  filter: blur(1.5px);
+  font-size: 60px;
+}
+
+.not-found__second {
+  filter: blur(3px);
+  font-size: 50px;
+}
+
+.not-found__last {
+  filter: blur(4.5px);
+  font-size: 42px;
+}
+
+.not-found__basic {
+  text-shadow: 3px 2px 2px $border-dark;
+}
+
+@media (max-width: 1280px) {
+  .not-found__last {
+    display: none;
+  }
+}
+
+@media (max-width: 992px) {
+  .not-found__second {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .not-found__title {
+    max-width: 280px;
+    text-align: center;
+  }
+
+  .not-found__first {
+    display: none;
+  }
+}

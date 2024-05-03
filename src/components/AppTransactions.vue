@@ -1,4 +1,5 @@
 <script setup>
+import '../assets/scss/components/app-transactions.scss';
 import { useUserStore } from '@/stores/user';
 const userStore = useUserStore();
 </script>
@@ -29,29 +30,3 @@ const userStore = useUserStore();
     </table>
   </div>
 </template>
-
-<style lang="scss" scoped>
-.table {
-  width: 100%;
-  border-spacing: 20px;
-
-  & th {
-    @include font(14px, 500, 17px);
-    color: $text-pale-dark;
-    text-transform: uppercase;
-    text-align: left;
-    padding: 20px 0;
-  }
-
-  & td {
-    @include font(16px, 500, 20px);
-    text-transform: uppercase;
-    min-width: 80px;
-    padding: 20px 0;
-  }
-
-  & .table__first-col {
-    width: 50%;
-  }
-}
-</style>

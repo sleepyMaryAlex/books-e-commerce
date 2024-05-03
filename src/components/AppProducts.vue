@@ -1,6 +1,7 @@
 <script setup>
+import '../assets/scss/components/app-products.scss';
 import books from '../app/books';
-import { computed, onMounted, ref, watchEffect, inject } from 'vue';
+import { ref, inject } from 'vue';
 import 'vue3-carousel/dist/carousel.css';
 import { Carousel, Slide } from 'vue3-carousel';
 import { useUserStore } from '@/stores/user';
@@ -12,7 +13,7 @@ const router = useRouter();
 const userStore = useUserStore();
 const cartStore = useCartStore();
 
-const { isAuthModalOpened, setAuthModalOpened } = inject('isAuthModalOpened');
+const { setAuthModalOpened } = inject('isAuthModalOpened');
 
 function handleAddToCartButtonClick(book) {
   if (userStore.currentUser) {
@@ -68,9 +69,9 @@ function isBookAddedToCart(id) {
           snapAlign="start"
           :breakpoints="breakpoints"
           :wrapAround="true"
-          class="products__carousel"
+          class="carousel"
         >
-          <Slide v-for="book in books" :key="book.id" class="product">
+          <Slide v-for="book in books" :key="book.id" class="carousel__slide product">
             <div class="product__image-wrapper">
               <img :src="book.image" alt="Product image" class="product__image" />
             </div>
@@ -94,114 +95,3 @@ function isBookAddedToCart(id) {
     </div>
   </section>
 </template>
-
-<style lang="scss" scoped>
-.products__container {
-  padding: $padding-x-desktop;
-  padding-top: 60px;
-  padding-bottom: 100px;
-  @include flex(column, center, stretch);
-  gap: 40px;
-}
-
-.products__top-panel {
-  @include flex(row, space-between, center);
-  gap: 20px;
-}
-
-.products__heading {
-  @include font(40px, 600, 48px);
-  text-transform: uppercase;
-}
-
-.products__arrows {
-  @include flex(row, center, center);
-  gap: 40px;
-}
-
-.products__arrow {
-  cursor: pointer;
-  width: 56px;
-  height: 56px;
-
-  &:hover {
-    filter: brightness(0) saturate(100%) invert(49%) sepia(0%) saturate(0%) hue-rotate(227deg)
-      brightness(83%) contrast(75%);
-  }
-}
-
-.products__carousel-wrapper {
-  overflow: hidden;
-}
-
-.products__carousel {
-  @include flex(row, flex-start, stretch);
-  flex-wrap: nowrap;
-  position: relative;
-  margin: 0 -10px;
-  text-align: left;
-}
-
-.product {
-  @include flex(column, flex-start, stretch);
-  gap: 16px;
-  padding: 10px;
-}
-
-.product__image-wrapper {
-  width: 100%;
-  height: 380px;
-  overflow: hidden;
-}
-
-.product__image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.product__title {
-  text-transform: uppercase;
-  @include font(24px, 500, 30px);
-}
-
-.product__details {
-  @include font(16px, 400, 25px);
-  color: $text-pale-dark;
-}
-
-.product__price {
-  @include font(24px, 600, 30px);
-}
-
-.product__add-to-cart-button {
-  width: 134px;
-  height: 48px;
-  border: 1px solid $border-dark;
-  @include font(16px, 400, 20px);
-  cursor: pointer;
-
-  &.disabled {
-    cursor: auto;
-  }
-}
-
-@media (max-width: 767px) {
-  .products__container {
-    padding: $padding-x-mobile;
-  }
-
-  .products__arrows {
-    gap: 10px;
-  }
-
-  .products__arrow {
-    width: 40px;
-    height: 40px;
-  }
-
-  .products__heading {
-    @include font(30px, 600, 40px);
-  }
-}
-</style>

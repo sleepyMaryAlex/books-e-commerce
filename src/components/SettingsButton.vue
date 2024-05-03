@@ -1,11 +1,12 @@
 <script setup>
-import { ref, inject } from 'vue';
+import '../assets/scss/components/settings-button.scss';
+import { ref } from 'vue';
 import { useUserStore } from '@/stores/user';
 import settingsIcon from '../assets/images/icons/settings.svg';
 import AppModal from './AppModal.vue';
 import AppPurchases from './AppPurchases.vue';
 import AppTransactions from './AppTransactions.vue';
-import Popover from './Popover.vue';
+import AppPopover from './AppPopover.vue';
 
 const store = useUserStore();
 
@@ -39,7 +40,7 @@ function handleLogOut() {
   >
     <img :src="settingsIcon" alt="Settings" />
   </button>
-  <Popover
+  <AppPopover
     :isPopoverOpened="isPopoverOpened"
     @openDetailsModal="openDetailsModal"
     @handleLogOut="handleLogOut"
@@ -65,49 +66,3 @@ function handleLogOut() {
     </AppModal>
   </Transition>
 </template>
-
-<style lang="scss" scoped>
-.header__settings-button {
-  width: 48px;
-  height: 48px;
-  @include flex(row, center, center);
-  background-color: $bg-dark;
-  cursor: pointer;
-}
-
-.header__settings-button {
-  background-color: $bg-light;
-  border: 1px solid $border-dark;
-}
-
-.tabs {
-  width: 856px;
-}
-
-.tabs__button {
-  width: 50%;
-  height: 62px;
-  cursor: pointer;
-  text-transform: capitalize;
-  @include font(18px, 500, 22px);
-  color: $text-pale-dark;
-  transition: all 0.3s;
-
-  &.active {
-    color: $text-dark;
-    border-bottom: 1px solid $text-dark;
-  }
-}
-
-@media (max-width: 1060px) {
-  .tabs {
-    width: 600px;
-  }
-}
-
-@media (max-width: 767px) {
-  .tabs {
-    width: 100%;
-  }
-}
-</style>

@@ -1,4 +1,5 @@
 <script setup>
+import '../assets/scss/components/auth-form.scss';
 import { defineProps, defineEmits, ref, watch, inject, computed } from 'vue';
 import googleIcon from '../assets/images/icons/google.svg';
 import { useUserStore } from '@/stores/user';
@@ -9,7 +10,7 @@ const passwordFeedbackMessage = ref('');
 
 const store = useUserStore();
 
-const { isAuthModalOpened, setAuthModalOpened } = inject('isAuthModalOpened');
+const { setAuthModalOpened } = inject('isAuthModalOpened');
 const props = defineProps(['access']);
 const emit = defineEmits(['setAccess']);
 
@@ -32,7 +33,7 @@ watch([email, password, () => props.access], () => {
 });
 
 watch(email, () => {
-  if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.value)) {
+  if (/^\w+([-]?\w+)*@\w+([-]?\w+)*(\.\w{2,3})+$/.test(email.value)) {
     emailFeedbackMessage.value = '';
   } else if (email.value === '') {
     emailFeedbackMessage.value = 'Please fill out this field';
@@ -122,156 +123,3 @@ function handleSubmit() {
     </div>
   </form>
 </template>
-
-<style lang="scss" scoped>
-.form__container {
-  @include flex(column, center, stretch);
-  gap: 24px;
-}
-
-.form__field {
-  @include flex(column, flex-start, stretch);
-  gap: 8px;
-  position: relative;
-}
-
-.form__feedback {
-  position: absolute;
-  right: 0;
-  padding: 4px;
-  background-color: $error-color;
-  font-size: 14px;
-}
-
-.form__input {
-  width: 508px;
-  height: 48px;
-  border: 1px solid $border-pale;
-  padding: 0 10px;
-  font-family: inherit;
-  transition: border 0.3s;
-
-  &:focus {
-    outline: none !important;
-    border: 1px solid $border-dark;
-    border-radius: none;
-  }
-}
-
-.form__label,
-.form__checkbox-label,
-.form__prompt {
-  @include font(14px, 500, 17px);
-}
-
-.form__checkbox-field {
-  @include flex(row, flex-start, center);
-}
-
-.form__checkbox-label {
-  @include flex(row, flex-start, center);
-  gap: 12px;
-  position: relative;
-  cursor: pointer;
-}
-
-.form__checkbox {
-  position: absolute;
-  opacity: 0;
-  height: 0;
-  width: 0;
-}
-
-.form__checkmark {
-  height: 24px;
-  width: 24px;
-  border-radius: 4px;
-  border: 1px solid $border-pale;
-}
-
-.form__checkbox:checked ~ .form__checkmark {
-  background-color: $bg-dark;
-}
-
-.form__checkmark:after {
-  content: '';
-  position: absolute;
-  display: none;
-}
-
-.form__checkbox:checked ~ .form__checkmark:after {
-  display: block;
-}
-
-.form__checkmark:after {
-  left: 8px;
-  top: 4px;
-  width: 5px;
-  height: 10px;
-  border: solid $bg-light;
-  border-width: 0 3px 3px 0;
-  transform: rotate(45deg);
-}
-
-.form__prompt {
-  border-bottom: 1px solid $text-dark;
-  align-self: flex-end;
-  cursor: pointer;
-}
-
-.form__auth-button {
-  width: 100%;
-  height: 48px;
-  color: $text-light;
-  @include font(16px, 500, 20px);
-  background-color: $bg-dark;
-  cursor: pointer;
-
-  &.disabled {
-    background-color: lighten($color: $bg-dark, $amount: 20);
-    cursor: auto;
-  }
-}
-
-.form__separator {
-  @include flex(row, space-between, center);
-  gap: 20px;
-}
-
-.form__line {
-  width: 100%;
-  height: 1px;
-  background-color: $border-pale;
-}
-
-.form__google-button {
-  width: 100%;
-  height: 48px;
-  @include flex(row, center, center);
-  gap: 12px;
-  background-color: $bg-pale;
-  font-size: 16px;
-  cursor: pointer;
-
-  & span {
-    @include font(16px, 500, 20px);
-  }
-}
-
-.form__submit-error-message {
-  width: 100%;
-  height: 48px;
-  @include flex(row, center, center);
-  background-color: $error-color;
-  font-size: 16px;
-  color: $text-light;
-  text-align: center;
-  padding: 10px;
-}
-
-@media (max-width: 767px) {
-  .form__input {
-    width: 100%;
-  }
-}
-</style>
