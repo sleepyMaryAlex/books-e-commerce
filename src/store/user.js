@@ -1,10 +1,11 @@
 import { ref } from 'vue';
 import { defineStore } from 'pinia';
 import { v4 as uuidv4 } from 'uuid';
+import { getFromLocalStorage } from '@/utils/storageUtils';
 
 export const useUserStore = defineStore('user', () => {
-  const currentUser = ref(JSON.parse(localStorage?.getItem('piniaState'))?.currentUser || null);
-  const usersData = ref(JSON.parse(localStorage?.getItem('piniaState'))?.usersData || []);
+  const currentUser = ref(getFromLocalStorage('piniaState')?.currentUser || null);
+  const usersData = ref(getFromLocalStorage('piniaState')?.usersData || []);
 
   function addCurrentUser(userData) {
     currentUser.value = userData;
