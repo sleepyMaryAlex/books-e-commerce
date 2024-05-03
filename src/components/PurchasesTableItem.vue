@@ -1,18 +1,21 @@
 <script setup>
 import '../assets/scss/components/purchases-table-item.scss';
 import { ref } from 'vue';
-import { useCartStore } from '@/store/cart';
+import { useUserStore } from '@/store/user';
+import { useUsersStore } from '@/store/users';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
-const cartStore = useCartStore();
+const userStore = useUserStore();
+const usersStore = useUsersStore();
 
 defineProps(['transaction']);
 
 const isDetailsOpened = ref(false);
 
 const handleBuyAgainButtonClick = (book) => {
-  cartStore.addToCart(book, 1);
+  userStore.addToCart(book, 1);
+  usersStore.addToCart(book, 1, userStore.currentUser.id);
   router.push('/cart');
 };
 </script>

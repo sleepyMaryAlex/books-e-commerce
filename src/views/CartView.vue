@@ -1,23 +1,26 @@
 <script setup>
 import '../assets/scss/pages/cart-view.scss';
 import { useUserStore } from '@/store/user';
-import { useCartStore } from '@/store/cart';
+import { useUsersStore } from '@/store/users';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
 const userStore = useUserStore();
-const cartStore = useCartStore();
+const usersStore = useUsersStore();
 
 const handleQuantityChange = (bookId, value) => {
-  cartStore.updateCart(bookId, value);
+  userStore.updateCart(bookId, value);
+  usersStore.updateCart(bookId, value, userStore.currentUser.id);
 };
 
 const handleEmptyCartButtonClick = () => {
-  cartStore.emptyCart(userStore.currentUser.id);
+  userStore.emptyCart();
+  usersStore.emptyCart(userStore.currentUser.id);
 };
 
 const handleRemoveButtonClick = (bookId) => {
-  cartStore.deleteFromCart(bookId);
+  userStore.deleteFromCart(bookId);
+  usersStore.deleteFromCart(bookId, userStore.currentUser.id);
 };
 </script>
 

@@ -3,23 +3,24 @@ import '../assets/scss/components/auth-form.scss';
 import { defineProps, defineEmits, ref, watch, inject, computed } from 'vue';
 import googleIcon from '../assets/images/icons/google.svg';
 import { useUserStore } from '@/store/user';
+import { useUsersStore } from '@/store/users';
+import { v4 as uuidv4 } from 'uuid';
 
 const submitErrorMessage = ref('');
 const emailFeedbackMessage = ref('');
 const passwordFeedbackMessage = ref('');
 
 const userStore = useUserStore();
+const usersStore = useUsersStore();
 
 const { setModalOpened } = inject('isModalOpened');
 const props = defineProps(['access']);
 const emit = defineEmits(['setAccess']);
 
-const email = ref(userStore.usersData.findLast((user) => user.isRemember === true)?.email || '');
-const password = ref(
-  userStore.usersData.findLast((user) => user.isRemember === true)?.password || ''
-);
+const email = ref(usersStore.users.findLast((user) => user.isRemember === true)?.email || '');
+const password = ref(usersStore.users.findLast((user) => user.isRemember === true)?.password || '');
 const isRemember = ref(
-  userStore.usersData.findLast((user) => user.isRemember === true)?.isRemember || false
+  usersStore.users.findLast((user) => user.isRemember === true)?.isRemember || false
 );
 
 watch(
@@ -64,16 +65,34 @@ const isDisabled = computed(() => {
   );
 });
 
+const signup = (email, password) => {
+  const newUser = {
+    id: uuidv4(),
+    email: email,
+    password: password,
+    isRemember: false,
+    cart: [],
+    transactions: []
+  };
+  userStore.addCurrentUser(newUser);
+  usersStore.addToUsers(JSON.parse(JSON.stringify(newUser)));
+};
+
+const login = (user, isRemember) => {
+  userStore.addCurrentUser({ ...JSON.parse(JSON.stringify(user)), isRemember });
+  usersStore.updateUser(user, { isRemember });
+};
+
 const handleSubmit = () => {
-  const user = userStore.findUser(email.value, password.value);
+  const user = usersStore.findUser(email.value, password.value);
   if (props.access === 'log-in') {
     user
-      ? userStore.login(user.id, isRemember.value)
+      ? login(user, isRemember.value)
       : (submitErrorMessage.value = 'You don’t have an account. Please sign up');
   } else if (props.access === 'sign-up') {
     user
       ? (submitErrorMessage.value = 'You already have an account. Please log in')
-      : userStore.signup(email.value, password.value);
+      : signup(email.value, password.value);
   }
 };
 </script>

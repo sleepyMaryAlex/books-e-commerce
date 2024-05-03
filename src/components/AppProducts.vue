@@ -5,16 +5,17 @@ import { ref, inject } from 'vue';
 import 'vue3-carousel/dist/carousel.css';
 import { Carousel, Slide } from 'vue3-carousel';
 import { useUserStore } from '@/store/user';
-import { useCartStore } from '@/store/cart';
+import { useUsersStore } from '@/store/users';
 
 const userStore = useUserStore();
-const cartStore = useCartStore();
+const usersStore = useUsersStore();
 
 const { setModalOpened } = inject('isModalOpened');
 
 const handleAddToCartButtonClick = (book) => {
   if (userStore.currentUser) {
-    cartStore.addToCart(book, 1);
+    userStore.addToCart(book, 1);
+    usersStore.addToCart(book, 1, userStore.currentUser.id);
   } else {
     setModalOpened(true);
   }

@@ -1,14 +1,14 @@
 <script setup>
 import '../assets/scss/pages/checkout-view.scss';
-import { useUserStore } from '@/store/user';
 import { useRouter } from 'vue-router';
 import { ref, watch, computed } from 'vue';
-import { useTransactionStore } from '@/store/transaction';
+import { useUserStore } from '@/store/user';
+import { useUsersStore } from '@/store/users';
 import { format } from 'date-fns';
 
 const router = useRouter();
 const userStore = useUserStore();
-const transactionStore = useTransactionStore();
+const usersStore = useUsersStore();
 
 const phoneNumber = ref('');
 const cardNumber = ref('');
@@ -59,7 +59,9 @@ const handlePayButton = () => {
     date: format(new Date(), 'dd-MM-yyyy'),
     totalPrice: calculateTotalPrice()
   };
-  transactionStore.addTransaction(transaction, userStore.currentUser.id);
+
+  userStore.addTransaction(transaction);
+  usersStore.addTransaction(transaction, userStore.currentUser.id);
   isPaymentSuccessful.value = true;
 };
 </script>
