@@ -7,27 +7,27 @@ const userStore = useUserStore();
 
 <template>
   <div class="transactions">
-    <table class="transactions__table table">
-      <thead>
-        <tr>
-          <th scope="col" class="table__first-col">Product</th>
-          <th scope="col">Date</th>
-          <th scope="col">Total</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="(transaction, index) in userStore.currentUser.transactions" :key="index">
-          <td class="table__title">
-            Books ({{
-              transaction.products.reduce((total, current) => total + Number(current.quantity), 0)
-            }})
-          </td>
-          <td>
-            {{ transaction.date }}
-          </td>
-          <td>${{ transaction.totalPrice }}</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="transactions__container" v-if="userStore.currentUser.transactions.length !== 0">
+      <div class="transactions__grid transactions__grid_title">
+        <p>Product</p>
+        <p>Date</p>
+        <p>Total</p>
+      </div>
+      <div
+        v-for="(transaction, index) in userStore.currentUser.transactions"
+        :key="index"
+        class="transactions__grid"
+      >
+        <p>
+          Books ({{
+            transaction.products.reduce((total, current) => total + Number(current.quantity), 0)
+          }})
+        </p>
+        <p>
+          {{ transaction.date }}
+        </p>
+        <p>${{ transaction.totalPrice }}</p>
+      </div>
+    </div>
   </div>
 </template>

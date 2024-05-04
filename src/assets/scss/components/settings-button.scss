@@ -15,7 +15,8 @@
 }
 
 .tabs {
-  width: 856px;
+  @include flex(row, space-between, stretch);
+  gap: 10px;
 }
 
 .tabs__button {
@@ -33,14 +34,31 @@
   }
 }
 
-@media (max-width: 1060px) {
-  .tabs {
-    width: 600px;
+.modal__block {
+  width: 600px;
+  min-height: 400px;
+  @include flex(column, flex-start, stretch);
+  gap: 20px;
+}
+
+.modal__message {
+  align-self: center;
+}
+
+@media (max-width: 991px) {
+  .modal__block {
+    width: 510px;
+    min-height: 400px;
+    @include flex(column, flex-start, stretch);
+    gap: 20px;
   }
 }
 
-@media (max-width: 767px) {
-  .tabs {
-    width: 100%;
+@media (max-width: 675px) {
+  .modal__block {
+    width: 95%;
+    min-height: 400px;
+    @include flex(column, flex-start, stretch);
+    gap: 20px;
   }
 }

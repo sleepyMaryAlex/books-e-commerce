@@ -1,26 +1,39 @@
 @import '../utils/variables';
 @import '../utils/mixins';
 
-.table {
-  width: 100%;
-  border-spacing: 20px;
-
-  & th {
-    @include font(14px, 500, 17px);
-    color: $text-pale-dark;
-    text-transform: uppercase;
-    text-align: left;
-    padding: 20px 0;
-    width: 25%;
-  }
-
-  & .table__first-col {
-    width: 35%;
-  }
+.purchases__container {
+  padding: 40px 0;
+  @include flex(column, flex-start, stretch);
+  gap: 20px;
 }
 
-@media (max-width: 767px) {
-  .table {
-    border-spacing: 10px;
+.purchases__grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  gap: 20px;
+}
+
+.purchases__grid_title {
+  @include font(14px, 500, 17px);
+  color: $text-pale-dark;
+  text-transform: uppercase;
+}
+
+.purchases__item {
+  overflow: hidden;
+}
+
+@media (max-width: 991px) {
+  .purchases__grid {
+    grid-template-columns: 2fr 1.3fr;
+
+    & p:nth-child(2) {
+      display: none;
+    }
+
+    & p:nth-child(3) {
+      display: none;
+    }
   }
 }

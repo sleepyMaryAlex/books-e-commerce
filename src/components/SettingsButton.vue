@@ -47,18 +47,22 @@ const handleLogOut = () => {
   />
   <Transition>
     <AppModal v-if="isModalOpened && userStore.currentUser">
-      <div>
-        <div class="tabs"></div>
-        <button
-          v-for="(_, tab) in tabs"
-          :key="tab"
-          :class="['tabs__button', { active: currentTab === tab }]"
-          @click="currentTab = tab"
-        >
-          {{ tab }}
-        </button>
+      <div class="modal__block">
+        <div class="tabs">
+          <button
+            v-for="(_, tab) in tabs"
+            :key="tab"
+            :class="['tabs__button', { active: currentTab === tab }]"
+            @click="currentTab = tab"
+          >
+            {{ tab }}
+          </button>
+        </div>
+        <div><component :is="tabs[currentTab]"></component></div>
+        <p v-if="userStore.currentUser.transactions.length === 0" class="modal__message">
+          No {{ currentTab }}
+        </p>
       </div>
-      <div><component :is="tabs[currentTab]"></component></div>
     </AppModal>
   </Transition>
 </template>

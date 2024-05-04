@@ -21,67 +21,33 @@ const handleBuyAgainButtonClick = (book) => {
 </script>
 
 <template>
-  <td class="table__cell">
-    <p class="table__title">
+  <div class="purchases__grid">
+    <p>
       Books ({{
         transaction.products.reduce((total, current) => total + Number(current.quantity), 0)
       }})
     </p>
-    <div
-      class="table__details"
-      :class="{
-        active: isDetailsOpened
-      }"
-    >
-      <p v-for="product in transaction.products" :key="product.book.id">
-        {{ product.book.title }} x {{ product.quantity }}
-      </p>
-    </div>
-  </td>
-  <td class="table__cell">
     <p>{{ transaction.date }}</p>
-    <div
-      class="table__details"
-      :class="{
-        active: isDetailsOpened
-      }"
-    >
-      <p v-for="product in transaction.products" :key="product.book.id">
-        {{ transaction.date }}
-      </p>
-    </div>
-  </td>
-  <td class="table__cell">
     <p>${{ transaction.totalPrice }}</p>
-    <div
-      class="table__details"
-      :class="{
-        active: isDetailsOpened
-      }"
-    >
-      <p v-for="product in transaction.products" :key="product.book.id">
-        ${{ product.book.price }} x {{ product.quantity }}
-      </p>
-    </div>
-  </td>
-  <td class="table__cell">
-    <p class="table__details-button" @click="isDetailsOpened = !isDetailsOpened">
+    <p class="purchases__details-button" @click="isDetailsOpened = !isDetailsOpened">
       {{ isDetailsOpened ? 'Show less' : 'Show more' }}
     </p>
-    <div
-      class="table__details"
-      :class="{
-        active: isDetailsOpened
-      }"
-    >
-      <p
-        v-for="product in transaction.products"
-        :key="product.book.id"
-        class="table__buy-again-button"
-        @click="handleBuyAgainButtonClick(product.book)"
-      >
+  </div>
+  <div
+    class="purchases__details"
+    :class="{
+      active: isDetailsOpened
+    }"
+  >
+    <div v-for="product in transaction.products" :key="product.book.id" class="purchases__grid">
+      <p>{{ product.book.title }} x {{ product.quantity }}</p>
+      <p>
+        {{ transaction.date }}
+      </p>
+      <p>${{ product.book.price }} x {{ product.quantity }}</p>
+      <p class="purchases__buy-again-button" @click="handleBuyAgainButtonClick(product.book)">
         Buy again
       </p>
     </div>
-  </td>
+  </div>
 </template>

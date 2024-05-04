@@ -8,20 +8,20 @@ const userStore = useUserStore();
 
 <template>
   <div class="purchases">
-    <table class="purchases__table table">
-      <thead>
-        <tr>
-          <th scope="col" class="table__first-col">Product</th>
-          <th scope="col">Date</th>
-          <th scope="col">Total</th>
-          <th scope="col">Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="(transaction, index) in userStore.currentUser.transactions" :key="index">
-          <PurchasesTableItem :transaction="transaction" />
-        </tr>
-      </tbody>
-    </table>
+    <div class="purchases__container" v-if="userStore.currentUser.transactions.length !== 0">
+      <div class="purchases__grid purchases__grid_title">
+        <p>Product</p>
+        <p>Date</p>
+        <p>Total</p>
+        <p>Actions</p>
+      </div>
+      <div
+        class="purchases__item"
+        v-for="(transaction, index) in userStore.currentUser.transactions"
+        :key="index"
+      >
+        <PurchasesTableItem :transaction="transaction" />
+      </div>
+    </div>
   </div>
 </template>

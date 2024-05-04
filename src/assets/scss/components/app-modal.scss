@@ -13,25 +13,21 @@
 }
 
 .modal__container {
-  min-height: 690px;
   padding: 40px 56px;
   background-color: $bg-light;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
+  overflow-y: auto;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 675px) {
   .modal__container {
     width: 95%;
-    min-height: 690px;
     padding: 45px 40px;
-    gap: 40px;
   }
 }
 
 @media (max-width: 478px) {
   .modal__container {
-    min-height: 650px;
     padding: 30px 20px;
-    gap: 20px;
   }
 }

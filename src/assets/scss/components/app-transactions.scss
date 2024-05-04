@@ -1,26 +1,31 @@
 @import '../utils/variables';
 @import '../utils/mixins';
 
-.table {
-  width: 100%;
-  border-spacing: 20px;
+.transactions__container {
+  padding: 40px 0;
+  @include flex(column, flex-start, stretch);
+  gap: 20px;
+}
 
-  & th {
-    @include font(14px, 500, 17px);
-    color: $text-pale-dark;
-    text-transform: uppercase;
-    text-align: left;
-    padding: 20px 0;
-  }
+.transactions__grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: auto;
+  gap: 20px;
+}
 
-  & td {
-    @include font(16px, 500, 20px);
-    text-transform: uppercase;
-    min-width: 80px;
-    padding: 20px 0;
-  }
+.transactions__grid_title {
+  @include font(14px, 500, 17px);
+  color: $text-pale-dark;
+  text-transform: uppercase;
+}
 
-  & .table__first-col {
-    width: 50%;
+@media (max-width: 991px) {
+  .transactions__grid {
+    grid-template-columns: 2fr 1.3fr;
+
+    & p:nth-child(2) {
+      display: none;
+    }
   }
 }
